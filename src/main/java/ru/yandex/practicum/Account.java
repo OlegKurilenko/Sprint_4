@@ -15,6 +15,6 @@ public class Account {
 
         int spaceCount = name.replaceAll("[^ ]", "").length();
 
-        return (name.length() >= 3) & (name.length() <= 19) & ((name.trim()).length() == name.length()) & spaceCount == 1;
+        return (name.length() >= 3) && (name.length() <= 19) && ((name.trim()).length() == name.length()) && spaceCount == 1;
     }
 }
