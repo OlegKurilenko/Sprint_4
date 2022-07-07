@@ -10,22 +10,16 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class AccountTest {
 
-    private Account account;
-
     private final String name;
     private final boolean expected;
+    private Account account;
 
     public AccountTest(String name, boolean expected) {
         this.name = name;
         this.expected = expected;
     }
 
-    @Before
-    public void setup() {
-        account = new Account(name);
-    }
-
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: Строка - \"{0}\", Результат - \"{1}\"")
     public static Object[][] getParamData() {
         return new Object[][]{
                 {"Тимоти Шаламе", true},
@@ -41,7 +35,14 @@ public class AccountTest {
                 {"ЙцукенгшщзхФывапролдджэс ", false},
                 {"1234567890 12345678", true},
                 {"   ", false},
+                {"", false},
+                {null, false},
         };
+    }
+
+    @Before
+    public void setup() {
+        account = new Account(name);
     }
 
     @Test
